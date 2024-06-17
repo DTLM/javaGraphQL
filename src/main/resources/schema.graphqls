@@ -1,0 +1,25 @@
+type Query {
+  veiculoById(id: ID): Veiculo
+  veiculosByModelo(modelo: String): [Veiculo]
+  veiculosAbastecidosComDiesel(): [Veiculo]
+  veiculosAbastecidosComGasolina(): [Veiculo]
+  veiculosAbastecidosComEtanol(): [Veiculo]
+  ConsumoById(id: ID): Consumo
+}
+
+type Veiculo {
+  id: ID
+  marca: String
+  modelo: String
+  placa: String
+  anoFabricacao: Date
+  anoModelo: Date
+}
+
+type Consumo {
+  id: ID
+  valor: Double
+  data: Date
+  tipo: Int
+  veiculo: Veiculo
+}
