@@ -36,7 +36,7 @@ public class Consumo implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column
-	private Double valor;
+	private Float valor;
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
