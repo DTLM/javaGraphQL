@@ -1,9 +1,11 @@
+scalar Date
+
 type Query {
   veiculoById(id: ID): Veiculo
   veiculosByModelo(modelo: String): [Veiculo]
-  veiculosAbastecidosComDiesel(): [Veiculo]
-  veiculosAbastecidosComGasolina(): [Veiculo]
-  veiculosAbastecidosComEtanol(): [Veiculo]
+  veiculosAbastecidosComDiesel: [Veiculo]
+  veiculosAbastecidosComGasolina: [Veiculo]
+  veiculosAbastecidosComEtanol: [Veiculo]
   ConsumoById(id: ID): Consumo
 }
 
@@ -18,8 +20,13 @@ type Veiculo {
 
 type Consumo {
   id: ID
-  valor: float
+  valor: Float
   data: Date
-  tipo: Int
+  tipo: TipoCombustivelEnum
   veiculo: Veiculo
+}
+enum TipoCombustivelEnum{
+  DIESEL
+  ETANOL
+  GASOLINA
 }
