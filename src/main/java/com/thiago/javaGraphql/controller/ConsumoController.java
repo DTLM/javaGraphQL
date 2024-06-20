@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/graphql/consumo")
 public class ConsumoController {
 
     private ConsumoService consumoService;

@@ -40,10 +40,8 @@ public class Veiculo implements Serializable{
 	@Column
 	private String placa;
 	@Column
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date anoFabricacao;
+	private Integer anoFabricacao;
 	@Column
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date anoModelo;
+	private Integer anoModelo;
 
 }
