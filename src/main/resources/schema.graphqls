@@ -1,16 +1,48 @@
 scalar Date
+scalar Long
+scalar Void
+
+schema {
+  query: Query
+  mutation: Mutation
+}
 
 type Query {
-  veiculoById(id: ID): Veiculo
+  veiculoById(id: Long): Veiculo
   veiculosByModelo(modelo: String): [Veiculo]
   veiculosAbastecidosComDiesel: [Veiculo]
   veiculosAbastecidosComGasolina: [Veiculo]
   veiculosAbastecidosComEtanol: [Veiculo]
-  ConsumoById(id: ID): Consumo
+  ConsumoById(id: Long): Consumo
+}
+
+type Mutation{
+  createVeiculo(veiculo: VeiculoInput!): Veiculo!
+  updateVeiculo(veiculo: VeiculoInput!): Veiculo!
+  deleteVeiculo(id: Long!): Void
+  createConsumo(consumo: ConsumoInput!): Consumo!
+  updateConsumo(consumo: ConsumoInput!): Consumo!
+  deleteConsumo(id: Long!): Void
+}
+
+input VeiculoInput{
+  id: Long
+  marca: String
+  modelo: String
+  placa: String
+  anoFabricacao: Date
+  anoModelo: Date
+}
+
+input ConsumoInput{
+  valor: Float
+  data: Date
+  tipo: TipoCombustivelEnum
+  veiculo: Long!
 }
 
 type Veiculo {
-  id: ID
+  id: Long
   marca: String
   modelo: String
   placa: String
@@ -19,7 +51,7 @@ type Veiculo {
 }
 
 type Consumo {
-  id: ID
+  id: Long
   valor: Float
   data: Date
   tipo: TipoCombustivelEnum

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VeiculoService {
@@ -31,5 +32,17 @@ public class VeiculoService {
     }
     public List<Veiculo> veiculosAbastecidosComEtanol(){
         return veiculoRepository.veiculosAbastecidosComEtanol();
+    }
+
+    public Veiculo createVeiculo(Veiculo veiculo){
+        return veiculoRepository.save(veiculo);
+    }
+    public Veiculo updateVeiculo(Veiculo veiculo){
+        Optional<Veiculo> veiculoAux = veiculoRepository.findById(veiculo.getId());
+        return veiculoAux.map(value -> veiculoRepository.save(value)).orElseGet(() -> veiculoRepository.save(veiculo));
+    }
+
+    public void deleteVeiculo(Long id) {
+        veiculoRepository.deleteById(id);
     }
 }

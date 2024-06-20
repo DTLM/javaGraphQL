@@ -4,15 +4,15 @@ import com.thiago.javaGraphql.model.Veiculo;
 import com.thiago.javaGraphql.service.VeiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("/graphql")
+@RequestMapping("/graphql/veiculo")
 public class VeiculoController {
 
     private VeiculoService  veiculoService;
@@ -41,5 +41,18 @@ public class VeiculoController {
     @QueryMapping
     public List<Veiculo> veiculosAbastecidosComEtanol(){
         return veiculoService.veiculosAbastecidosComEtanol();
+    }
+
+    @MutationMapping
+    public Veiculo createVeiculo(@Argument Veiculo veiculo) {
+        return veiculoService.createVeiculo(veiculo);
+    }
+    @MutationMapping
+    public Veiculo updateVeiculo(@Argument Veiculo veiculo){
+        return veiculoService.updateVeiculo(veiculo);
+    }
+    @MutationMapping
+    public void deleteVeiculo(@Argument Long id){
+        veiculoService.deleteVeiculo(id);
     }
 }
