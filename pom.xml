@@ -25,13 +25,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-graphql</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.graphql-java-kickstart/graphiql-spring-boot-starter -->
-<!--		<dependency>-->
-<!--			<groupId>com.graphql-java-kickstart</groupId>-->
-<!--			<artifactId>graphiql-spring-boot-starter</artifactId>-->
-<!--			<version>11.1.0</version>-->
-<!--		</dependency>-->
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

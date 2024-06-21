@@ -9,7 +9,13 @@ type Query {
   veiculosAbastecidosComDiesel: [Veiculo]
   veiculosAbastecidosComGasolina: [Veiculo]
   veiculosAbastecidosComEtanol: [Veiculo]
+  veiculoByAnoFabricacao(ano: Int!) : [Veiculo]
   consumoById(id: ID): Consumo
+  consumoByModelo(modelo: String): [Consumo]
+  consumoByMarca(marca: String): [Consumo]
+  consumoByTipo(tipo: TipoCombustivelEnum): [Consumo]
+  consumoBtDatas(dataInicio: String, dataFim: String):[Consumo]
+  consumoByVeiculoId(id: ID): [Consumo]
 }
 
 type Mutation{
@@ -32,9 +38,10 @@ input VeiculoInput{
 
 input ConsumoInput{
   valor: Float
+  dataAux: String
   data: String
   tipo: TipoCombustivelEnum
-  veiculo: ID!
+  veiculoId: ID!
 }
 
 type Veiculo {
@@ -49,9 +56,10 @@ type Veiculo {
 type Consumo {
   id: ID
   valor: Float
+  dataAux: String
   data: String
   tipo: TipoCombustivelEnum
-  veiculo: Veiculo
+  veiculoId: ID!
 }
 enum TipoCombustivelEnum{
   DIESEL

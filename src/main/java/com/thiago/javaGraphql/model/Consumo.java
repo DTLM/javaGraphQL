@@ -1,21 +1,16 @@
 package com.thiago.javaGraphql.model;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import jakarta.persistence.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import com.thiago.javaGraphql.enums.TipoCombustivelEnum;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,4 +39,10 @@ public class Consumo implements Serializable {
 	private TipoCombustivelEnum tipo;
 	@ManyToOne
 	private Veiculo veiculo;
+
+	@Transient
+	private Long veiculoId;
+	@Transient
+	private String dataAux;
+
 }

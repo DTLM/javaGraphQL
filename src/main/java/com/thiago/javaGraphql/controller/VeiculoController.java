@@ -23,10 +23,13 @@ public class VeiculoController {
     public Veiculo veiculoById(@Argument Long id){
         return veiculoService.veiculoById(id);
     }
-
     @QueryMapping
     public List<Veiculo> veiculoByModelo(@Argument String modelo){
         return veiculoService.veiculosByModelo(modelo);
+    }
+    @QueryMapping
+    public List<Veiculo> veiculoByAnoFabricacao(@Argument Integer ano){
+        return veiculoService.veiculosByAnoFabricacao(ano);
     }
     @QueryMapping
     public List<Veiculo> veiculosAbastecidosComDiesel(){

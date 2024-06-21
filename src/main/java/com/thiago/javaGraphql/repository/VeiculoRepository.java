@@ -12,6 +12,8 @@ public interface VeiculoRepository extends CrudRepository<Veiculo, Long> {
 
     @Query(value = "SELECT v FROM Veiculo v where v.modelo like ?1")
     List<Veiculo> findByModelo(String modelo);
+    @Query(value = "SELECT v FROM Veiculo v where v.anoFabricacao = ?1")
+    List<Veiculo> findByAnoFabricacao(Integer ano);
     @Query(value = "SELECT new Veiculo(v.id, v.marca, v.modelo, v.placa, v.anoFabricacao, v.anoModelo) FROM Veiculo v, Consumo c where c.tipo = 0")
     List<Veiculo> veiculosAbastecidosComDiesel();
     @Query(value = "SELECT new Veiculo(v.id, v.marca, v.modelo, v.placa, v.anoFabricacao, v.anoModelo) FROM Veiculo v, Consumo c where c.tipo = 2")

@@ -24,6 +24,9 @@ public class VeiculoService {
     public List<Veiculo> veiculosByModelo(String modelo){
         return veiculoRepository.findByModelo(modelo);
     }
+    public List<Veiculo> veiculosByAnoFabricacao(Integer anoFabricacao){
+        return veiculoRepository.findByAnoFabricacao(anoFabricacao);
+    }
     public List<Veiculo> veiculosAbastecidosComDiesel(){
         return veiculoRepository.veiculosAbastecidosComDiesel();
     }
